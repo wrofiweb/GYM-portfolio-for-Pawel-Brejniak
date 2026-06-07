@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c96a;
+  --color-crimson: #8b0000;
+  --color-crimson-light: #c0392b;
+  --color-neon-red: #ff2244;
+  --color-bg-dark: #050508;
+  --color-bg-card: #0d0d12;
+  --color-bg-surface: #111118;
+  --font-display: "Oswald", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050508;
+  color: #ffffff;
+  overflow-x: hidden;
 }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d0d12; }
+::-webkit-scrollbar-thumb { background: #c9a84c; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #e8c96a; }
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #c9a84c, #e8c96a, #c9a84c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-crimson {
+  background: linear-gradient(135deg, #8b0000, #c0392b, #ff2244);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-gold {
+  box-shadow: 0 0 20px rgba(201,168,76,0.4), 0 0 60px rgba(201,168,76,0.15);
+}
+
+.glow-crimson {
+  box-shadow: 0 0 20px rgba(192,57,43,0.5), 0 0 60px rgba(192,57,43,0.2);
+}
+
+.glow-text-gold {
+  text-shadow: 0 0 20px rgba(201,168,76,0.6), 0 0 60px rgba(201,168,76,0.3);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.luxury-card {
+  background: linear-gradient(135deg, #0d0d12, #111118);
+  border: 1px solid rgba(201,168,76,0.15);
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.luxury-card:hover {
+  border-color: rgba(201,168,76,0.5);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.1);
+  transform: translateY(-4px);
+}
+
+.animated-underline { position: relative; }
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #c0392b);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after { width: 100%; }
